@@ -1,0 +1,61 @@
+<form autocomplete="off" #createAirplaneForm="ngForm" (ngSubmit)="save()">
+    <h1 mat-dialog-title>{{ "CreateNewAirplane" | localize }}</h1>
+    <mat-dialog-content style="width:600px;height:300px;">
+        <mat-tab-group>
+            <mat-tab [label]="'Details' | localize">
+                <br />
+                <div class="row-fluid">
+                    <div class="col-md-12">
+                        <mat-form-field>
+                            <input matInput
+                                   name="Code"
+                                   [placeholder]="'Code' | localize"
+                                   [(ngModel)]="airplane.code"
+                                   required
+                                   minlength="2"
+                                   maxlength="32" />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput
+                                   name="Name"
+                                   [placeholder]="'Name' | localize"
+                                   [(ngModel)]="airplane.name"
+                                   required
+                                   minlength="2"
+                                   maxlength="32" />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput
+                                   name="Model"
+                                   [placeholder]="'Model' | localize"
+                                   [(ngModel)]="airplane.model"
+                                   required
+                                   minlength="2"
+                                   maxlength="32" />
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput
+                                   type="number"
+                                   name="NumberPassengers"
+                                   [placeholder]="'NumberPassengers' | localize"
+                                   [(ngModel)]="airplane.numberPassengers" />
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-tab>
+           
+        </mat-tab-group>
+    </mat-dialog-content>
+    <div mat-dialog-actions align="end">
+        <button mat-button type="button" [disabled]="saving" (click)="close(false)">
+            {{ "Cancel" | localize }}
+        </button>
+        <button mat-flat-button
+                type="submit"
+                flex="15"
+                color="primary"
+                [disabled]="!createAirplaneForm.form.valid || saving">
+            {{ "Save" | localize }}
+        </button>
+    </div>
+</form>
